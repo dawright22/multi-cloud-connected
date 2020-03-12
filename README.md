@@ -146,4 +146,4 @@ To clean up you will want to remove the user profile from your kubeconfig
 
 ## please check to see if app_stack/app_cloud_name/vault/init.txt exists.
 
-## If it does please is remove it before running the setup scripts.
+## If it does please remove it before running again.
