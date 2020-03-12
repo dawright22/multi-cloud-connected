@@ -110,7 +110,7 @@ You can connect to the consul UI and see the services registerd using http://<EX
 
 it should look like this:
 
-![]/images/consul.png
+![](/images/consul.png)
 
 You can connect to the Vault UI and see the secrets engines enabled using http://<EXTERNAL_IP:8200>
 
