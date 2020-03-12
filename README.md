@@ -86,9 +86,9 @@ variable "gcp_project"
 ### Main.tf
 Here you can name the clusters by altering the following:
 
-'''hcl
+```hcl
 cluster_name = "your-name"
-'''
+```
 
 ## Outputs
 The Terraform will locally install the user creds into your kubectl config file so that you can switch between the clusters use the kubectl config get-contexts command to see cluster names
