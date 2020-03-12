@@ -41,7 +41,10 @@ Before you run this you will need to:
 
 5.Insall Azure Cli https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest 
 
-## NOTE:If you are re-running this demo for a second time please check to see if app_stack/app_<cloud>/vault/init.txt exists. If it does please is remove it before running the setup scripts.
+6.Clone this repo
+
+7.Run terraform apply
+
 
 ## Inputs
 ### AKS
@@ -105,7 +108,7 @@ run kubectl get svc to see the EXTERNAL-IP to connect to for the service.
 
 
 ### What you get!
-## Consul
+### Consul
 
 You can connect to the consul UI and see the services registerd using http://<EXTERNAL-IP>
 
@@ -113,7 +116,7 @@ it should look like this:
 
 ![](/images/consul.png)
 
-## Vault
+### Vault
 You can connect to the Vault UI and see the secrets engines enabled using http://<EXTERNAL_IP:8200>
 
 You will need to login in using the ROOT TOKEN from the init.txt file located in app_stack/app_<cloud>/vault/init.txt to authenticate
@@ -122,11 +125,23 @@ it should look like this:
 
 ![](/images/vault.png)
 
-## Transit-app
+### Transit-app
 
 You can connect to the Vault UI and see the secrets engines enabled using http://<EXTERNAL_IP:5000>
 
 ![](/images/tranist-app.png)
 
 
+## Clean up
 
+To delete your enviroments you need to run
+
+./clean.sh in each of the K8 clusters
+
+then run terraform destroy
+
+To clean up you will want to remove the user profile from your kubeconfig
+
+## NOTE:If you want to run this demo for a second time please check to see if app_stack/app_cloud_name/vault/init.txt exists.
+
+If it does please is remove it before running the setup scripts.
