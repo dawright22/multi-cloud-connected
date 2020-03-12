@@ -151,4 +151,6 @@ To clean up you will want to remove the user profile from your kubeconfig
 ### If it does please remove it before running again.
 
 
-inspired and leverage code from this https://medium.com/hashicorp-engineering/hashicorp-consul-multi-cloud-and-multi-platform-service-mesh-372a82264e8e
+inspired and leverage code from this article
+
+https://medium.com/hashicorp-engineering/hashicorp-consul-multi-cloud-and-multi-platform-service-mesh-372a82264e8e
