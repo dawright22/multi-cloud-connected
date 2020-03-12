@@ -142,6 +142,8 @@ then run terraform destroy
 
 To clean up you will want to remove the user profile from your kubeconfig
 
-## NOTE:If you want to run this demo for a second time please check to see if app_stack/app_cloud_name/vault/init.txt exists.
+## NOTE:If you want to run this demo for a second time 
 
-If it does please is remove it before running the setup scripts.
+## please check to see if app_stack/app_cloud_name/vault/init.txt exists.
+
+## If it does please is remove it before running the setup scripts.
