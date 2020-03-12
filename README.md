@@ -46,7 +46,7 @@ Before you run this you will need to:
 ## Inputs
 ### AKS
 You will need to set the following variables to be relevant to your envrioment:
-
+```hcl
 variable "appId" 
   default = "41111111111111111111111"
 
@@ -55,12 +55,12 @@ variable "password"
 
 variable "location" 
   default = "Australia East"
-
+```
 ### EKS
 You will need to set the following variables to be relevant to your envrioment:
-
+```hcl
 variable "aws_region" 
-
+```
 ### GKS
 You will need to set the following variables to be relevant to your envrioment:
 ```hcl
