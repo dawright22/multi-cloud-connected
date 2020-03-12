@@ -10,7 +10,7 @@ variable "gcp_zone" {
 
 variable "gcp_project" {
   description = "GCP project name"
-  default     = "dwright-gcp-demos"
+  default     = "my-gcp-demos"
 }
 
 variable "cluster_name" {
