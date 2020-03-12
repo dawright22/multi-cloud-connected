@@ -105,7 +105,7 @@ run kubectl get svc to see the EXTERNAL-IP to connect to for the service.
 
 
 ### What you get!
-##Consul
+## Consul
 
 You can connect to the consul UI and see the services registerd using http://<EXTERNAL-IP>
 
@@ -113,7 +113,7 @@ it should look like this:
 
 ![](/images/consul.png)
 
-##Vault
+## Vault
 You can connect to the Vault UI and see the secrets engines enabled using http://<EXTERNAL_IP:8200>
 
 You will need to login in using the ROOT TOKEN from the init.txt file located in app_stack/app_<cloud>/vault/init.txt to authenticate
@@ -122,10 +122,9 @@ it should look like this:
 
 ![](/images/vault.png)
 
-##Transit-app
+## Transit-app
 
 You can connect to the Vault UI and see the secrets engines enabled using http://<EXTERNAL_IP:5000>
-
 
 ![](/images/tranist-app.png)
 
