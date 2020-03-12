@@ -123,10 +123,11 @@ it should look like this:
 ![](/images/vault.png)
 
 ##Transit-app
+
 You can connect to the Vault UI and see the secrets engines enabled using http://<EXTERNAL_IP:5000>
 
 
-![](/images/transit-app.png)
+![](/images/tranist-app.png)
 
 
 
