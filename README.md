@@ -31,10 +31,14 @@ module "Cluster_GKE" {
 ## Pre-requirements 
 Before you run this you will need to:
 
-1.You will need to auth to GCP,Azure and AWS.
+1.You will need to auth to GCP,Azure and AWS
+
 2.Install helm V2 **if you use helm version 3 the tiller install will fail**
+
 3.Install aswcli v2 https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html 
+
 4.Install GKE SDK https://cloud.google.com/sdk/docs/downloads-interactive 
+
 5.Insall Azure Cli https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest 
 
 ## NOTE:If you are re-running this demo for a second time please check to see if app_stack/app_<cloud>/vault/init.txt exists. If it does please is remove it before running the setup scripts.
