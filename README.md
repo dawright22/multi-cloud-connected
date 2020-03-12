@@ -23,9 +23,6 @@ module "Cluster_AKS" {
 module "Cluster_GKE" {
   source       = "./Cluster_GKE"
   cluster_name = "gke-k8-demo"
-  gcp_project  = "project-name"
-  gcp_region   = "australia-southeast1"
-
 }
 ```
 ## Pre-requirements 
