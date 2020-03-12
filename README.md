@@ -65,17 +65,22 @@ variable "aws_region"
 You will need to set the following variables to be relevant to your envrioment:
 
 variable "gcp_region" 
+
   description = "GCP region, e.g. us-east1"
+  
   default     = "australia-southeast1"
 
 variable "gcp_zone" 
+
   description = "GCP zone, e.g. us-east1-b (which must be in gcp_region)"
+  
   default     = "australia-southeast1-c"
 
-variable "gcp_project" {
+variable "gcp_project" 
+
   description = "GCP project name"
+  
   default     = "your-project-name"
-}
 
 
 ### Main.tf
