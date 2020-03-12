@@ -63,7 +63,7 @@ variable "aws_region"
 
 ### GKS
 You will need to set the following variables to be relevant to your envrioment:
-
+```hcl
 variable "gcp_region" 
 
   description = "GCP region, e.g. us-east1"
@@ -81,7 +81,7 @@ variable "gcp_project"
   description = "GCP project name"
   
   default     = "your-project-name"
-
+```
 
 ### Main.tf
 Here you can name the clusters by altering the following:
