@@ -21,7 +21,7 @@ spec:
       automountServiceAccountToken: true
       containers:
         - name: k8s-transit-app
-          image: aklaas2/k8s-transit-app:latest
+          image: dawright/k8-transit-multi-app:latest
           ports:
           - containerPort: 5000
             protocol: TCP
