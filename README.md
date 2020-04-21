@@ -2,7 +2,7 @@
 A terraform module to create a basic MariaDB SQL service and the Transit APP that is configured to use Dynamic Secrets and Transit Encryption using Vault. To conect these service Consul is configuread as a service registory.
 
 ## Usage
-If you use without changing anything a random pet name will be created and used in each cluster
+If you clone the repo and run an apply without changing anything a random pet name will be created with the TFE prefix and used in each cluster
 
 ```hcl
 terraform {
@@ -10,7 +10,7 @@ terraform {
 }
 
 resource "random_pet" "name" {
-  prefix = "dr"
+  prefix = "TFE"
   length = 1
 }
 
