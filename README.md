@@ -2,27 +2,34 @@
 A terraform module to create a basic MariaDB SQL service and the Transit APP that is configured to use Dynamic Secrets and Transit Encryption using Vault. To conect these service Consul is configuread as a service registory.
 
 ## Usage
+If you use without changing anything a random pet name will be created and used in each cluster
 
 ```hcl
 terraform {
   required_version = ">= 0.12"
 }
+
+resource "random_pet" "name" {
+  prefix = "dr"
+  length = 1
+}
+
 #AWS
 module "Cluster_EKS" {
   source       = "./Cluster_EKS"
-  cluster-name = "eks-k8-demo"
+  cluster-name = "${random_pet.name.id}"
 
 }
-# #MSFT
+#MSFT
 module "Cluster_AKS" {
   source       = "./Cluster_AKS"
-  cluster-name = "aks-k8-demo"
+  cluster-name = "${random_pet.name.id}"
 
 }
 #Google
 module "Cluster_GKE" {
   source       = "./Cluster_GKE"
-  cluster_name = "gke-k8-demo"
+  cluster_name = "${random_pet.name.id}"
 }
 ```
 ## Pre-requirements 
