@@ -1,28 +1,16 @@
 #!/bin/bash
 # set -v
 
-# if [ -z "$1" ]
-#   then
-#     echo "Please provide private_ip from terraform output. This is the DC2 VM private IP"
-#     exit 0
-# fi
+helm repo add hashicorp https://helm.releases.hashicorp.com
 
-# DC2_PRIVATE_IP=$1
+ cd consul-mesh
 
-cd tiller
-./helm-init.sh
-cd ..
-
-kubectl wait --timeout=120s --for=condition=Ready $(kubectl get pod --selector=app=helm -o name -n kube-system) -n kube-system
-sleep 1s
-
-cd consul
 ./consul.sh
+
 kubectl wait --timeout=120s --for=condition=Ready $(kubectl get pod --selector=app=consul -o name)
+
 sleep 1s
-#./intentions.sh
-#Wan Join with DC2
-# consul join -wan $DC2_PRIVATE_IP
+
 cd ..
 
 cd mariadb
@@ -34,11 +22,12 @@ sleep 1s
 
 cd vault
 ./vault.sh
-sleep 60s
+sleep 5
 ./vault_setup.sh
 cd ..
 
-kubectl apply -f ./application_deploy
+kubectl apply -f ./application_deploy_sidecar
+
 kubectl get svc k8s-transit-app
 
 echo ""

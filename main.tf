@@ -3,7 +3,7 @@ terraform {
 }
 
 resource "random_pet" "name" {
-  prefix = "TFE"
+  prefix = "consul"
   length = 1
 }
 
@@ -11,7 +11,7 @@ resource "random_pet" "name" {
 module "Cluster_EKS" {
   source       = "./Cluster_EKS"
   cluster-name = "${random_pet.name.id}"
-
+  
 }
 #MSFT
 module "Cluster_AKS" {

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kubectl delete -f ./application_deploy
-helm delete --purge consul
-helm delete --purge vault
-helm delete --purge mariadb
+kubectl delete -f ./application_deploy_sidecar
+helm uninstall consul
+helm uninstall vault
+helm uninstall mariadb

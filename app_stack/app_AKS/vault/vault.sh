@@ -2,9 +2,11 @@
 set -v
 
 # Clone the repo
-helm install  --name=vault -f ./values.yaml ./vault-helm
+git clone https://github.com/hashicorp/vault-helm.git
 
-sleep 30s
+helm install  vault -f ./values.yaml ./vault-helm
+
+sleep 60s
 
 
 

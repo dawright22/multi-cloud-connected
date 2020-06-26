@@ -2,11 +2,11 @@ variable "cluster-name" {
 }
 
 variable "appId" {
-  default = "222222222222222222222222222222222222"
+  default = "4dc3caf3-78a4-4809-a023-42574206c3d0"
 }
 
 variable "password" {
-  default = "11111111111111111111111111111111111"
+  default = "c6f3d74a-1741-49b8-a9a0-9731d8673ce2"
 }
 
 variable "location" {

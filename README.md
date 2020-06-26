@@ -1,4 +1,4 @@
-# Multi-cloud-k8-demo
+# Multi-cloud-connected
 A terraform module to create a basic MariaDB SQL service and the Transit APP that is configured to use Dynamic Secrets and Transit Encryption using Vault. To conect these service Consul is configuread as a service registory.
 
 ## Usage
@@ -37,7 +37,7 @@ Before you run this you will need to:
 
 1.You will need to auth to GCP,Azure and AWS
 
-2.Install helm V2 **if you use helm version 3 the tiller install will fail**
+2.Install helm 3
 
 3.Install aswcli v2 https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html 
 
@@ -47,7 +47,7 @@ Before you run this you will need to:
 
 6.Clone this repo
 
-7.Run terraform apply
+7.Run terraform init
 
 
 ## Inputs
@@ -123,7 +123,7 @@ it should look like this:
 ### Vault
 You can connect to the Vault UI and see the secrets engines enabled using http://<EXTERNAL_IP:8200>
 
-You will need to login in using the ROOT TOKEN from the init.txt file located in app_stack/app_<cloud>/vault/init.txt to authenticate
+You will need to login in using the ROOT TOKEN from the init.json file located in app_stack/app_<cloud>/vault/init.json to authenticate
 
 it should look like this:
 

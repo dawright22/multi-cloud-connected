@@ -21,7 +21,7 @@ resource "aws_subnet" "multi-cloud-k8-demo" {
   availability_zone = data.aws_availability_zones.available.names[count.index]
   cidr_block        = "10.0.${count.index}.0/24"
   vpc_id            = aws_vpc.multi-cloud-k8-demo.id
-
+  map_public_ip_on_launch = true  
   tags = map(
     "Name", "terraform-multi-cloud-k8-demo-node",
     "kubernetes.io/cluster/${var.cluster-name}", "shared",

@@ -1,33 +1,47 @@
 #!/bin/bash
 set -v
 
-FILE=init.txt
+FILE=init.json
+
 if [ -f "$FILE" ]; then
     echo "$FILE exists"
+
 else 
-    kubectl exec -it vault-0 -- vault operator init -key-shares=1  -key-threshold=1 | cat >> init.txt 
+    kubectl exec -it vault-0 -- vault operator init -key-shares=1  -key-threshold=1 -format "json"| cat >> init.json
 fi
 
-ROOT_TOKEN=$(cat init.txt | grep -o   ':[[:space:]]s.[[:alnum:]]*' | cut -d ":" -f 2)
-UNSEAL_KEY=$(cat -v init.txt | grep  '1:[[:space:]]*' | cut -d ":" -f 2 | cut -d "^" -f 1)
+sleep 2
+
+ROOT_TOKEN=$(jq -r '.root_token'  init.json)
+UNSEAL_KEY=$(jq -r '.unseal_keys_b64[0]' init.json)
+
+
+sleep 1
+#Raft storage
 
 kubectl exec -it vault-0 -- vault operator unseal $UNSEAL_KEY
+sleep 10
+
+kubectl exec -ti vault-1 -- vault operator raft join http://vault-0.vault-internal:8200
+sleep 10
+
+kubectl exec -ti vault-1 -- vault operator unseal $UNSEAL_KEY
+sleep 10
+
+kubectl exec -ti vault-2 -- vault operator raft join http://vault-0.vault-internal:8200
+sleep 10
+
+kubectl exec -ti vault-2 -- vault operator unseal $UNSEAL_KEY
+
+sleep 1
 
 kubectl exec -it vault-0 -- vault login $ROOT_TOKEN
 
-#Create admin user
-echo '
-path "*" {
-    capabilities = ["create", "read", "update", "delete", "list", "sudo"]
-}' | kubectl exec -it vault-0 -- vault policy write vault_admin -
-kubectl exec -it vault-0 -- vault auth enable userpass
-kubectl exec -it vault-0 -- vault write auth/userpass/users/vault password=vault policies=vault_admin
+kubectl exec -ti vault-0 -- vault operator raft list-peers
 
 #################################
 # Transit-app-example Vault setup
 #################################
-
-kubectl exec -it vault-0 -- vault login -method=userpass username=vault password=vault
 
 # Enable our secret engine
 kubectl exec -it vault-0 -- vault secrets enable -path=lob_a/workshop/database database
@@ -76,7 +90,7 @@ path "*" {
     capabilities = ["read", "list", "create", "update", "delete"]
 }'| kubectl exec -it vault-0 -- vault policy write transit-app-example - 
 
-
+### Kube intergation
 kubectl create serviceaccount vault-auth
 
 kubectl apply --filename vault-auth-service-account.yaml
